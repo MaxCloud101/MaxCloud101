@@ -1,6 +1,12 @@
+<img src="img/linkedin-top.jpg" width="100%">
+
 ## **Hola! Soy Max!** 🤵
 
 <br />
+
+
+
+
 <!-- LIST-ACTIVITIES:START -->
 
 - Trabajo en Rankmi como DataOps 🖥️
