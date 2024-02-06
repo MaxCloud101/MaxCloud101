@@ -10,8 +10,8 @@
 - Líder de la comunidad <b>AWS Machine Learning Latam </b> 🤖
 - <b>AWS re:post</b> puesto #12 📈
 - Instructor de tecnología 👨‍🏫
-- 💬 Preguntame acerca de: AWS, Docker, Kubernetes, Development, DevOps
-- 📫 Contactame en Linkedin: MaxCloud
+- 💬 Preguntame acerca de: AWS, Docker, Kubernetes, Development, DevOps 🐳
+- 📫 Contactame en Linkedin: MaxCloud 👋
   
 <!--LIST-ACTIVITIES:END -->
 
