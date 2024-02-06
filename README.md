@@ -1,9 +1,16 @@
-### Hola! Soy Max 🤓
+## **Hola! Soy Max!** 🤵
 
 <br />
+<!-- LIST-ACTIVITIES:START -->
 
-- 🔭 I’m currently working on Rankmi
-- 🌱 I’m currently learning ...
+- Trabajo en Rankmi como DataOps 🖥️
+- Mis áreas de interés son DevOps, Machine Learning e Ingeniería de Datos 🛠️
+- Nombrado <b>AWS Community Builder</b> 2 años consecutivos 🗣️
+- Líder de la comunidad <b>AWS Machine Learning Latam </b> 🤖
+- <b>AWS re:post</b> puesto #12 📈
+- Instructor de tecnología 👨‍🏫
+
+<!--LIST-ACTIVITIES:END -->
 
 <!--
 
