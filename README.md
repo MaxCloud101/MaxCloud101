@@ -1,11 +1,8 @@
-<img src="img/linkedin-top.jpg" width="100%">
-
 ## **Hola! Soy Max!** 🤵
 
 <br />
 
-
-
+<img src="img/linkedin-top.jpg" width="100%">
 
 <!-- LIST-ACTIVITIES:START -->
 
