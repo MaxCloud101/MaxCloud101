@@ -2,7 +2,7 @@
 
 <br />
 
-<img src="img/linkedin-top.jpg" width="100%">
+<img src="img/linkedin-top-1.jpg" width="100%">
 
 <!-- LIST-ACTIVITIES:START -->
 
