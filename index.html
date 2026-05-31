@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nación Cloud — Pronto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray: rgba(255, 255, 255, 0.08);
+      --glow: rgba(255, 255, 255, 0.6);
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Grid de fondo */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--gray) 1px, transparent 1px),
+        linear-gradient(90deg, var(--gray) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridMove 20s linear infinite;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 80%);
+    }
+
+    @keyframes gridMove {
+      0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+      100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
+    }
+
+    /* Línea de escaneo */
+    .scanline {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .scanline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--white), transparent);
+      opacity: 0.15;
+      animation: scan 4s ease-in-out infinite;
+    }
+
+    @keyframes scan {
+      0% { top: -2px; opacity: 0; }
+      10% { opacity: 0.15; }
+      90% { opacity: 0.15; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    /* Partículas */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 50%;
+      opacity: 0;
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* Esquinas decorativas */
+    .corner {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      border-color: var(--white);
+      border-style: solid;
+      opacity: 0.3;
+    }
+
+    .corner-tl { top: 24px; left: 24px; border-width: 1px 0 0 1px; }
+    .corner-tr { top: 24px; right: 24px; border-width: 1px 1px 0 0; }
+    .corner-bl { bottom: 24px; left: 24px; border-width: 0 0 1px 1px; }
+    .corner-br { bottom: 24px; right: 24px; border-width: 0 1px 1px 0; }
+
+    /* Contenido principal */
+    .container {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .logo-wrapper {
+      position: relative;
+      animation: logoFade 1.2s ease-out forwards;
+      opacity: 0;
+    }
+
+    .logo-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -30px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo {
+      width: min(280px, 70vw);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.15));
+      animation: logoPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes logoFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes logoPulse {
+      0%, 100% { filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.15)); }
+      50% { filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.3)); }
+    }
+
+    .pronto {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      position: relative;
+      animation: prontoFade 1.2s ease-out 0.4s forwards;
+      opacity: 0;
+    }
+
+    .pronto::before,
+    .pronto::after {
+      content: '¡Pronto!';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+    }
+
+    .pronto::before {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+      animation: glitch1 5s infinite;
+    }
+
+    .pronto::after {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+      animation: glitch2 5s infinite;
+    }
+
+    @keyframes prontoFade {
+      from { opacity: 0; transform: translateY(15px); letter-spacing: 0.6em; }
+      to { opacity: 1; transform: translateY(0); letter-spacing: 0.35em; }
+    }
+
+    @keyframes glitch1 {
+      0%, 95%, 100% { opacity: 0; transform: translate(0); }
+      96% { opacity: 1; transform: translate(-3px, 1px); }
+      97% { opacity: 0; }
+      98% { opacity: 1; transform: translate(3px, -1px); }
+    }
+
+    @keyframes glitch2 {
+      0%, 95%, 100% { opacity: 0; transform: translate(0); }
+      96% { opacity: 1; transform: translate(3px, -1px); }
+      97% { opacity: 0; }
+      98% { opacity: 1; transform: translate(-3px, 1px); }
+    }
+
+    .divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--white), transparent);
+      animation: dividerExpand 1.2s ease-out 0.8s forwards;
+      transform: scaleX(0);
+    }
+
+    @keyframes dividerExpand {
+      to { transform: scaleX(1); }
+    }
+
+    .tagline {
+      font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+      font-weight: 300;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: taglineFade 1.2s ease-out 1s forwards;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    @keyframes taglineFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .status-bar {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: rgba(255, 255, 255, 0.35);
+      text-transform: uppercase;
+      animation: taglineFade 1.2s ease-out 1.4s forwards;
+      opacity: 0;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--white);
+      border-radius: 50%;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--white); }
+      50% { opacity: 0.3; box-shadow: none; }
+    }
+
+    @media (max-width: 480px) {
+      .corner { width: 24px; height: 24px; }
+      .corner-tl, .corner-tr { top: 16px; }
+      .corner-bl, .corner-br { bottom: 16px; }
+      .corner-tl, .corner-bl { left: 16px; }
+      .corner-tr, .corner-br { right: 16px; }
+      .pronto { letter-spacing: 0.2em; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <div class="corner corner-tl" aria-hidden="true"></div>
+  <div class="corner corner-tr" aria-hidden="true"></div>
+  <div class="corner corner-bl" aria-hidden="true"></div>
+  <div class="corner corner-br" aria-hidden="true"></div>
+
+  <main class="container">
+    <div class="logo-wrapper">
+      <img src="logo-white.png" alt="Nación Cloud" class="logo">
+    </div>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <h1 class="pronto">¡Pronto!</h1>
+
+    <p class="tagline">Algo grande se acerca</p>
+  </main>
+
+  <div class="status-bar">
+    <span class="status-dot"></span>
+    <span>En construcción</span>
+  </div>
+
+  <script>
+    (function () {
+      var container = document.getElementById('particles');
+      for (var i = 0; i < 30; i++) {
+        var p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDuration = (4 + Math.random() * 8) + 's';
+        p.style.animationDelay = Math.random() * 6 + 's';
+        container.appendChild(p);
+      }
+    })();
+  </script>
+
+</body>
+</html>
